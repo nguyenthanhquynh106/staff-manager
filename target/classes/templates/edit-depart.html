@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<title>Sửa phòng ban</title>
+</head>
+<body>
+	<div class="container" style="margin-top: 10px;">
+		<div class="row"
+			style="border: 1px darkgrey solid; border-radius: 10px; width: 50%; margin: 0 auto; padding: 20px;">
+			<div class="col-sm-12">
+				<p style="float: right; font-size: 16px">
+					<label th:text="${session.USERNAME}"></label> <a href="/logout">Đăng xuất</a>
+				</p>
+
+				<h2 class="myclass">Sửa phòng ban</h2>
+
+				<form th:action="${ACTION_DEPART}" th:object="${DEPARTDTO}" method="post" enctype="multipart/form-data">
+					<div class="form-group">
+						<label>Mã phòng ban</label> <input type="text" th:field="*{id}"
+							class="form-control" name="id" placeholder="Nhập mã phòng ban" id="id"
+							value="" readonly="readonly">
+					</div>
+					<div class="form-group">
+						<label>Tên phòng ban</label> <input type="text" th:field="*{name}"
+							class="form-control" name="name" placeholder="Nhập tên phòng ban"
+							id="name" value="">
+					</div>
+					<div class="form-group">
+						<label>Số lượng nhân viên</label> <input type="number" th:field="*{numberStaffs}"
+							class="form-control" name="numberStaffs" placeholder="Nhập số lượng nhân viên"
+							id="numberStaffs" value="">
+					</div>
+					
+					<button type="submit" class="btn btn-primary">Lưu</button>
+					<button type="reset" class="btn btn-danger">Hủy</button>
+					<a class="btn btn-warning" href="/departs/list">Xem danh sách phòng ban</a>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

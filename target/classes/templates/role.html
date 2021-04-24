@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<title>Thêm chức vụ</title>
+</head>
+<body>
+	<div class="container" style="margin-top: 10px;">
+		<div class="row"
+			style="border: 1px darkgrey solid; border-radius: 10px; width: 50%; margin: 0 auto; padding: 20px;">
+			<div class="col-sm-12">
+				<p style="float: right; font-size: 16px">
+					<label th:text="${session.USERNAME}"></label> <a href="/logout">Đăng xuất</a>
+				</p>
+
+				<h2 class="myclass">Thêm chức vụ</h2>
+
+				<form th:action="${ACTION_ROLE}" th:object="${ROLEDTO}" method="post" enctype="multipart/form-data">
+					<div class="form-group">
+						<label>Mã chức vụ</label> <input type="text" th:field="*{id}"
+							class="form-control" name="id" placeholder="Nhập mã chức vụ" id="id"
+							value="">
+					</div>
+					<div class="form-group">
+						<label>Tên chức vụ</label> <input type="text" th:field="*{name}"
+							class="form-control" name="name" placeholder="Nhập tên chức vụ"
+							id="name" value="">
+					</div>
+					<div class="form-group">
+						<label>Lương cơ bản</label> <input type="number" th:field="*{basicSalary}"
+							class="form-control" name="basicSalary" placeholder="Nhập lương cơ bản"
+							id="basicSalary" value="">
+					</div>
+					<div class="form-group">
+						<label>Phụ cấp</label> <input type="number" th:field="*{subSalary}"
+							class="form-control" name="subSalary" placeholder="Nhập phụ cấp"
+							id="subSalary" value="">
+					</div>
+					
+					<button type="submit" class="btn btn-primary">Lưu</button>
+					<button type="reset" class="btn btn-danger">Hủy</button>
+					<a class="btn btn-warning" href="/roles/list">Xem danh sách chức vụ</a>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

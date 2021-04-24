@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Danh sách công việc</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container" style="margin-top: 10px;">
+		<p style="float: right; font-size: 16px">
+			<label th:text="${session.USERNAME}"></label> <a href="/logout">Đăng xuất</a>
+		</p>
+
+		<h2 class="text-center">DANH SÁCH CÔNG VIỆC</h2>
+		<p>
+			<a class="btn btn-success" href="/goHome"><span
+				class="glyphicon glyphicon-home"></span> Trang chủ</a> <a
+				class="btn btn-primary" href="/jobs/"><span
+				class="glyphicon glyphicon-tasks"></span> Thêm công việc</a>
+		</p>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Mã công việc</th>
+					<th>Tên công việc</th>
+					<th>Mô tả</th>
+					<th>Ngày bắt đầu</th>
+					<th>Ngày kết thúc</th>
+					<th>Phòng ban</th>
+					<th>Hoạt động</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="item : ${LIST_JOB}">
+					<td th:text="${item.id}"></td>
+					<td th:text="${item.name}"></td>
+					<td th:text="${item.describe}"></td>
+					<td th:text="${item.startDate}"></td>
+					<td th:text="${item.finishDate}"></td>
+					<td th:text="${item.depart.name}"></td>
+					<td><a class="btn btn-primary btn-sm"
+						th:href="@{'/jobs/edit/' + ${item.id}}">Sửa</a> | <a
+						class="btn btn-danger btn-sm"
+						th:href="@{'/jobs/delete/' + ${item.id}}">Xóa</a></td>
+				</tr>
+
+			</tbody>
+		</table>
+
+	</div>
+</body>
+</html>

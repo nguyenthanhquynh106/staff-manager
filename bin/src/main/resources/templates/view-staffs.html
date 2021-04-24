@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JSP Page</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<!-- http://localhost:8080/staffs/list -->
+	<!-- Hiển thị danh sách nhân viên (Có thể đăng ký thêm, sửa, xóa nhân viên) -->
+	<div class="container" style="margin-top: 10px;">
+		<p style="float: right; font-size: 16px">
+			<label th:text="${session.USERNAME}"></label> <a href="/logout">Logout</a>
+		</p>
+
+		<h2>LIST STAFFS</h2>
+		<p>
+			<a class="btn btn-primary" href="/staffs/">ADD STAFF</a>
+		</p>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Photo</th>
+					<th>ID Staff</th>
+					<th>Name</th>
+					<th>Birthday</th>
+					<th>Phone</th>
+					<th>Salary</th>
+					<th>Depart</th>
+					<th>Gender</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="item : ${LIST_STAFF}">
+					<td width="100"><img alt=""
+						th:src="@{'/getimage/' + ${item.photo}}" width="80" height="80"></td>
+					<td th:text="${item.id}"></td>
+					<td th:text="${item.name}"></td>
+					<td th:text="${item.birthday}"></td>
+					<td th:text="${item.phone}"></td>
+					<td th:text="${item.salary}"></td>
+					<td th:text="${item.depart.name}"></td>
+					<td><span th:text="${item.gender} ? 'Nam' : 'Nu'"></span></td>
+					<td><a class="btn btn-primary btn-sm"
+						th:href="@{'/staffs/edit/' + ${item.id}}">Edit</a> | <a
+						class="btn btn-danger btn-sm"
+						th:href="@{'/staffs/delete/' + ${item.id}}">Delete</a></td>
+				</tr>
+
+			</tbody>
+		</table>
+
+	</div>
+</body>
+</html>
