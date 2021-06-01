@@ -61,7 +61,11 @@ public class RoleController {
 
 	@RequestMapping("/delete/{id}")
 	public String delete(ModelMap model, @PathVariable(name = "id") String id) {
-		roleService.deleteById(id);
+		try {
+			roleService.deleteById(id);
+		} catch (Exception ex) {
+			System.err.println("Bảng này không xóa được hihi");
+		}
 		model.addAttribute("ROLE_STAFF", roleService.findAll());
 		return "view-roles";
 	}

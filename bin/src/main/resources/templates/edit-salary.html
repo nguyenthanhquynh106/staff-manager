@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<title>Sửa lương nhân viên</title>
+</head>
+<body>
+	<div class="container" style="margin-top: 10px;">
+		<div class="row"
+			style="border: 1px darkgrey solid; border-radius: 10px; width: 50%; margin: 0 auto; padding: 20px;">
+			<div class="col-sm-12">
+				<p style="float: right; font-size: 16px">
+					<label th:text="${session.USERNAME}"></label> <a href="/logout">Đăng xuất</a>
+				</p>
+
+				<h2 class="myclass">Sửa lương nhân viên</h2>
+
+				<form th:action="${ACTION_SALARY}" th:object="${SALARYDTO}" method="post"
+					enctype="multipart/form-data">
+					<div class="form-group">
+						<label>Mã lương</label> <input type="text" th:field="*{id}"
+							class="form-control" name="id" placeholder="Nhập mã lương" id="id"
+							value="" readonly="readonly">
+					</div>
+					<div class="form-group">
+						<label>Mã nhân viên</label> <input type="text" th:field="*{staffId}"
+							class="form-control" name="staffId" placeholder="Nhập mã nhân viên" id="staffId"
+							value="">
+					</div>
+					<div class="form-group">
+						<label>Hệ số lương</label> <input type="text" th:field="*{salaryFactor}"
+							class="form-control" name="salaryFactor" placeholder="Nhập hệ số lương"
+							id="salaryFactor" value="">
+					</div>
+					
+					<button type="submit" class="btn btn-primary">Lưu</button>
+					<button type="reset" class="btn btn-danger">Hủy</button>
+					<a class="btn btn-warning" href="/salaries/list">Xem bảng lương</a>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -119,7 +119,11 @@ public class StaffController {
 
 	@RequestMapping("/delete/{id}")
 	public String delete(ModelMap model, @PathVariable(name = "id") String id) {
-		staffService.deleteById(id);
+		try {
+			staffService.deleteById(id);
+		} catch (Exception ex) {
+			System.err.println("Bảng này không xóa được hihi");
+		}
 		model.addAttribute("LIST_STAFF", staffService.findAll());
 		return "view-staffs";
 	}

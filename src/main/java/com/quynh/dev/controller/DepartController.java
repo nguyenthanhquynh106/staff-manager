@@ -62,7 +62,11 @@ public class DepartController {
 
 	@RequestMapping("/delete/{id}")
 	public String delete(ModelMap model, @PathVariable(name = "id") String id) {
-		departService.deleteById(id);
+		try {
+			departService.deleteById(id);
+		} catch(Exception ex) {
+			System.err.println("Bảng này không xóa được hihi");
+		}
 		model.addAttribute("DEPART_STAFF", departService.findAll());
 		return "view-departs";
 	}

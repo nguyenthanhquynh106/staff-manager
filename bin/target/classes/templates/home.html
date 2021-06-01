@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Trang chủ</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Orelega+One&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .header {
+            text-align: center;
+        }
+        
+        .header > h2 {
+            text-transform: uppercase;
+        }
+
+        .separator {
+			margin: 3rem 0;
+			border-bottom: 4px dashed #3498db;
+		}
+
+        .vertical-menu {
+            width: 100%;
+        }
+
+        .logo {
+            width: 100%;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .vertical-menu a {
+            background-color: #eee;
+            color: black;
+            display: block;
+            padding: 12px;
+            text-decoration: none;
+        }
+
+        .vertical-menu a:hover {
+            background-color: #ccc;
+        }
+
+        .vertical-menu a.active {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .row.content {
+            height: 92vh;
+        }
+
+        .sidenav {
+            background-color: #f1f1f1;
+            height: 100%;
+        }
+
+        footer {
+            background-color: #555;
+            color: white;
+            padding: 15px;
+            height: 8vh;
+        }
+
+        @media screen and (max-width: 767px) {
+            .sidenav {
+                height: auto;
+                padding: 15px;
+            }
+
+            .row.content {
+                height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row content">
+
+            <div class="col-sm-3 sidenav">
+                <img class="logo" src="https://www.cmc.com.vn/main/imgs/logo.svg" alt="">
+                <div class="vertical-menu">
+                    <a href="#" class="active">Trang chủ</a>
+                    <a href="/staffs/list">Quản lý nhân viên</a>
+                    <a href="/departs/list">Quản lý phòng ban</a>
+                    <a href="/jobs/list">Quản lý công việc</a>
+                    <a href="/roles/list">Quản lý chức vụ</a>
+                    <a href="/salaries/list">Quản lý lương</a>
+                </div>
+                <br>
+            </div>
+
+            <div class="col-sm-9">
+                <div class="header">
+                    <h2 style="font-family: 'Orelega One', cursive">chào <span th:text="${session.USERNAME}"></span></h2>
+                    <h4>Bạn vào đây với tư cách là một quản trị viên</h4>
+                    <h4>Mong là bạn sẽ có những trải nghiệm tốt nhất với trang web!</h4>
+                    <div class="separator"></div>
+                </div>
+                <h2>CMC Corporation</h2>
+                <h4>About us</h4>
+                <button class="btn btn-danger btn-sm"><a href="https://www.facebook.com/cmccorporation/" style="color: #fff; text-decoration: none;">Facebook</a></button> <button
+                    class="btn btn-primary btn-sm"><a href="https://vn.linkedin.com/company/cmc-corporation" style="color: #fff; text-decoration: none;">LinkedIn</a></button> <br> <br>
+                <p>CMC Corporation is the second largest ICT group in Vietnam with more than 27 years of establishment
+                    and development. CMC has affirmed its position in the market of Vietnam and many countries around
+                    the world through its core business activities in 3 areas: Technology & Solution, Global Business
+                    and Telecommunications. In Vietnam, CMC is well known as a reliable partner in medium and large ICT
+                    projects in the fields of Government, Education, Tax, Treasury, Customs, Insurance, Electricity,
+                    Banking, Finance and Enterprises. In fiscal year 2018, accumulated revenue of the Group reached
+                    nearly 260 million USD, profit before tax reached more than 13 million USD. Recently, CMC has just
+                    launched the C.OPE2N ecosystem (CMC Open Ecosystem for Enterprises) which helps businesses and
+                    organizations to digitally transform successfully. CMC set its ambition to become a billion-dollar
+                    company by 2023.
+                </p> <br>
+                <p>
+                    Consistent to the direction of considering ICT as the key capacity, CMC has built up and developed a
+                    professional working environment for nearly 2700 employees and gained many considerable achievements
+                    in production and business activities. For many continuous years, CMC has managed to keep the high
+                    growth rate and it is estimated that the growth rate will continue increasing strongly in coming
+                    years.
+                </p> <br>
+                <p>CMC has the strategy to continue investments and development in the key ICT business sectors and
+                    expand business to European, American and Japan markets to become the leading ICT groups with
+                    competitive capacity in the regional and international markets.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="container-fluid">
+        <p style="font-size: 12px;"><span class="glyphicon glyphicon-copyright-mark"></span> Copyright - <a href="#" style="color: #fff; text-decoration: none;">nhóm 4, lớp KTPM2-K13, đại học Công Nghiệp Hà Nội</a></p>
+    </footer>
+
+</body>
+
+</html>

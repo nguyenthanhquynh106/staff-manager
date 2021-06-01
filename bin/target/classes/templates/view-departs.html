@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Danh sách phòng ban</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container" style="margin-top: 10px;">
+		<p style="float: right; font-size: 16px">
+			<label th:text="${session.USERNAME}"></label> <a href="/logout">Đăng xuất</a>
+		</p>
+		<h2 class="text-center">DANH SÁCH PHÒNG BAN</h2>
+		
+		<p>
+			<a class="btn btn-success" href="/goHome"><span class="glyphicon glyphicon-home"></span> Trang chủ</a>
+			<a class="btn btn-primary" href="/departs/"><span class="glyphicon glyphicon-credit-card"></span> Thêm phòng ban</a>
+		</p>
+		
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Mã phòng ban</th>
+					<th>Tên phòng ban</th>
+					<th>Số lượng nhân viên</th>
+					<th>Hoạt động</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="item : ${DEPART_STAFF}">
+					<td th:text="${item.id}"></td>
+					<td th:text="${item.name}"></td>
+					<td th:text="${item.numberStaffs}"></td>
+					<td>
+						<a class="btn btn-primary" th:href="@{'/departs/edit/' + ${item.id}}">Sửa</a> | 
+						<a class="btn btn-danger" th:href="@{'/departs/delete/' + ${item.id}}">Xóa</a>
+					</td>
+				</tr>
+
+			</tbody>
+		</table>
+
+	</div>
+</body>
+</html>

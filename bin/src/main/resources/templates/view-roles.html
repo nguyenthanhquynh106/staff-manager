@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Bảng chức vụ</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container" style="margin-top: 10px;">
+		<p style="float: right; font-size: 16px">
+			<label th:text="${session.USERNAME}"></label> <a href="/logout">Đăng xuất</a>
+		</p>
+		<h2 class="text-center">BẢNG CHỨC VỤ</h2>
+		
+		<p>
+			<a class="btn btn-success" href="/goHome"><span class="glyphicon glyphicon-home"></span> Trang chủ</a>
+			<a class="btn btn-primary" href="/roles/"><span class="glyphicon glyphicon-credit-card"></span> Thêm chức vụ</a>
+		</p>
+		
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Mã chức vụ</th>
+					<th>Tên chức vụ</th>
+					<th>Lương cơ bản</th>
+					<th>Phụ cấp</th>
+					<th>Hoạt động</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="item : ${ROLE_STAFF}">
+					<td th:text="${item.id}"></td>
+					<td th:text="${item.name}"></td>
+					<td th:text="${item.basicSalary}"></td>
+					<td th:text="${item.subSalary}"></td>	
+					<td><a class="btn btn-primary"
+						th:href="@{'/roles/edit/' + ${item.id}}">Sửa</a> | <a
+						class="btn btn-danger"
+						th:href="@{'/roles/delete/' + ${item.id}}">Xóa</a></td>
+				</tr>
+
+			</tbody>
+		</table>
+
+	</div>
+</body>
+</html>
